@@ -1,3 +1,3 @@
 iCollege
 ========
-Character set changed.  ---------DYZ
+尝试一下中文  ---------DYZ
