@@ -45,32 +45,40 @@ if($neirong)
 }
 </style>
 
-<script src="https://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAWA_efwiQDHrv6MYDa3HE3hTwM0brOpm-All5BF6PoaKBxRWWERSSjUV6DjLhSErRl9rovZBNtOhNfA "
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCJPNB7P9KeU033UCFHm8bLQ_gpqDkYiYc&sensor=true"
             type="text/javascript"></script>
-    <script type="text/javascript">
-    //<![CDATA[
+<script type="text/javascript">
 
-    function load() {
-      if (GBrowserIsCompatible()) {
-        var map = new GMap2(document.getElementById("map"));
-        map.setCenter(new GLatLng(39.95, 116.345), 13);
-		map.addControl(new GSmallMapControl());
-		map.addControl(new GMapTypeControl());
+    function initialize() {
+	var map;
+		var options = {
+			zoom: 14,
+			center: new google.maps.LatLng(39.95, 116.345),
+			mapTypeId: google.maps.MapTypeId.ROADMAP,
+			scaleControl: true,
+			mapTypeControl: true
+		};
+        var map = new google.maps.Map(document.getElementById("map"), options);
 		
-		var icon = new GIcon();
-		icon.image = "http://labs.google.com/ridefinder/images/mm_20_red.png";
-		icon.shadow = "http://labs.google.com/ridefinder/images/mm_20_shadow.png";
-		icon.iconSize = new GSize(12, 20);
-		icon.shadowSize = new GSize(22, 20);
-		icon.iconAnchor = new GPoint(6, 20);
-		icon.infoWindowAnchor = new GPoint(5, 1);
-		var point = new GLatLng(39.95, 116.345);
-		map.addOverlay(new GMarker(point, icon));
-      }
+		var marker = new google.maps.Marker(
+			{
+				position: new google.maps.LatLng(39.95, 116.345),
+				map: map,
+				title: 'It\'s here!'
+			}
+		);
+		
+		//icon.image = "http://labs.google.com/ridefinder/images/mm_20_red.png";
+		//icon.shadow = "http://labs.google.com/ridefinder/images/mm_20_shadow.png";
+		//icon.iconSize = new google.maps.Size(12, 20);
+		//icon.shadowSize = new google.maps.Size(22, 20);
+		//icon.iconAnchor = new google.maps.Point(6, 20);
+		//icon.infoWindowAnchor = new google.maps.Point(5, 1);
+		//var point = new google.maps.LatLng(39.95, 116.345);
+		//map.addOverlay(new google.maps.Marker(point, icon));
     }
 
-    //]]>
-    </script>
+</script>
 
 <script language="javascript" type="text/javascript">
 function dosubmit()
@@ -89,7 +97,7 @@ function dosubmit()
 </script>
 </head>
 
-<body background="images/bg3.jpg">
+<body background="images/bg3.jpg" onload="initialize()">
 
 <center>
 <div style="width:1000px;height:2000px;text-align:left;border:0px">
