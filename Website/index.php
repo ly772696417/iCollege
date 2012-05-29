@@ -3,8 +3,6 @@
 	<meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
 	<title>iCollege —— 我的大学</title>
 	<link href="css/index.css" rel="stylesheet" type="text/css"/>
-	<style>
-	</style>
 </head>
 
 <body background="images/bg3.jpg">
@@ -12,12 +10,15 @@
 <center>
 <div style="width:1000px;text-align:left;border:0px">
 	<div class=topBar id=toplogo>
-		<input type=button value="首页" onMouseOut="this.style.backgroundColor=''" onMouseOver="this.style.backgroundColor='#777'" onclick="window.open('homepage.php')" style="margin-left:100px" class=topButtons>
-		<input type=button value="周边信息" onMouseOut="this.style.backgroundColor=''" onMouseOver="this.style.backgroundColor='#777'" onclick="window.open('classes.php')" class=topButtons>
+		<input type=button value="首页" onMouseOut="this.style.backgroundColor=''" onMouseOver="this.style.backgroundColor='#777'" onclick="window.location.reload()" style="margin-left:100px" class=topButtons>
+		<input type=button value="周边信息" onMouseOut="this.style.backgroundColor=''" onMouseOver="this.style.backgroundColor='#777'" onclick="window.location.href='classes.php'" class=topButtons>
 		<input type=button value="关于我们" onMouseOut="this.style.backgroundColor=''" onMouseOver="this.style.backgroundColor='#777'" onclick="window.open('aboutus.php')" class=topButtons>
-		<a href="register.html" style="margin-left:200px;margin-top:0px;color:#fff"class="topButtons" >注册</a>
-		<big style="margin-left:5px" class=topButtons>|</big>
-		<a href="login.html" style="margin-left:5px;margin-top:0px;color:#fff" class="topButtons" >登录</a>
+		<?php
+			if(!session_start()) session_start();
+			if($_SESSION['status'] == false)
+				echo "<a href='register.html' style='margin-left:200px;margin-top:0px;color:#fff'class='topButtons'>注册</a><big style='margin-left:5px' class=topButtons>|</big><a href='login.html' style='margin-left:5px;margin-top:0px;color:#fff' class='topButtons' >登录</a>";
+		?>
+		
 	</div>
 	<div style="height:1000px;background:url(images/bg1000.png)">
 		<div style="height:980px;width:960px;background-color:#FFF" id=midpic>
