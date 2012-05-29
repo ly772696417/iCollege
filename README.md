@@ -1,3 +1,3 @@
 iCollege
 ========
-你们能不能用用这个东西？不然代码太乱了！！！  ---------DYZ
+Character set changed.  ---------DYZ
