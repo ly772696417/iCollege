@@ -1,0 +1,23 @@
+delimiter //
+
+µÇÂ¼´æ´¢¹ı³Ì
+create procedure login(in p_usrnm varchar(20),in p_psswrd char(40))
+begin
+select * from usr where usrnm=p_usrnm and psswrd=p_psswrd;
+end//
+
+
+×¢²á´æ´¢¹ı³Ì£º
+create procedure register(in p_usrnm varchar(20),in p_psswrd char(40),in p_rlnm varchar(20),in p_sex char(1),in p_birthday date,in p_cllgnm varchar(30),in p_mlbx varchar(20))
+begin
+insert into usrs values(p_usrnm,p_psswrd,p_rlnm,p_sex,p_birthday,p_cllgnm,p_mlbx);
+end//
+
+
+ÆÀÂÛ´æ´¢¹ı³Ì£º
+create procedure judge(in p_itmnm varchar(40),in p_cmmnt varchar(190),in p_jdgtm date,in p_usrnm varchar(20))
+begin
+insert into cmmnts values(p_itmnm,p_cmmnt,p_jdgtm,p_usrnm);
+end//
+
+
