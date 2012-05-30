@@ -78,10 +78,11 @@ HTML;
 				draggable: true
 			}
 		);
-		google.maps.event.addListener(marker, "dragged", function(){
-			//document.form1.xp.value=marker.getPosition().lng();
-			//document.form1.yp.value=marker.getPosition().lat();
-			document.write(marker.getPosition());
+		google.maps.event.addListener(marker, "dragend", function(){
+		var lat = document.getElementById("lat");
+		var lan = document.getElementById("lan");
+		lat.value=marker.getPosition().lat();
+		lan.value = marker.getPosition().lng();
 		});
 
 
@@ -195,8 +196,8 @@ function dosubmit()
 				<td height="25" align="center" bgcolor="#FFFFFF">指出位置</td>
 				<td style="width: 360px; height: 500px">
 				<div id="map" style="width: 560px; height: 500px"></div>
-				<input type="text" name="xp" />
-				<input type="text" name="yp" />
+				<input type="text" name="xp" id="lat"/>
+				<input type="text" name="yp" id="lan"/>
 				</td>
 			</tr>
 			
