@@ -55,7 +55,7 @@ require_once("fun.php");
 	var map;
 		var options = {
 			zoom: 14,
-			center: new google.maps.LatLng(39.95, 116.345),
+			center: new google.maps.LatLng(document.form1.yp.value, document.form1.xp.value),
 			mapTypeId: google.maps.MapTypeId.ROADMAP,
 			scaleControl: true,
 			mapTypeControl: true
@@ -64,7 +64,7 @@ require_once("fun.php");
 		
 		var marker = new google.maps.Marker(
 			{
-				position: new google.maps.LatLng(39.95, 116.345),
+				position: new google.maps.LatLng(document.form1.yp.value, document.form1.xp.value),
 				map: map,
 				title: 'It\'s here!'
 			}
@@ -114,33 +114,46 @@ function dosubmit()
 		
 	</div>
 	
+	<?php  $sql = "select * from itms where itmnm='$itemname' ";
+  $rs = mysql_query($sql);
+
+  if($rs)
+  {
+  while($rows = mysql_fetch_object($rs))
+  {?>
+	
 	<div style="height:2000px;background:url(images/bgshadow.png)">
 		<div style="height:1980px;width:960px;background-color:#FFF" id=midpic>
 			<div style="height:310px;background:url(images/mainpic.png);"></div>
-			<center>
-			<div style="height:40px;width:790px;margin-bottom:10px;margin-left:80px;padding-top:10px" class="yellowbox">
-			<big style="font-size:26;font-family:'微软雅黑';color:#fff"><?php echo $itemname ?> &nbsp;&nbsp;&nbsp;</big>
+			
+			
+			<div style="height:40px;width:790px;margin-bottom:30px;margin-left:80px;padding-top:10px;background-color:#fff" >
+			<big style="font-size:50;font-family:'微软雅黑';color:#333"><?php echo $itemname; ?> </big>
+			<big style="font-size:16;font-family:'微软雅黑';color:#888">&nbsp;&nbsp;<?php echo $rows->sbttl; ?></big>
 			</div>
 
-			<div style="height:320px;width:790px;margin-bottom:3px;background-color:#eee" >
+			<center>
+			<div style="height:340px;width:790px;margin-bottom:3px;background-color:#eee" >
 			
-				<div style="height:202px;width:262px;border:6px solid #fafafa;margin:2px;float:left;margin:50px">
-				<div style="height:200px;width:260px;border:1px solid #ccc">
-				<img style="height:200px;width:260px" src="images/itemimg/<?php echo $itemname?>.png"></img>
+				<div style="height:302px;width:362px;border:6px solid #fafafa;margin:2px;float:left">
+				<div style="height:300px;width:360px;border:1px solid #ccc">
+				<img style="height:300px;width:360px" src="images/itemimg/<?php echo $itemname?>.png"></img>
 				</div ></div>
 			
-				<div style="height:302px;width:362px;border:6px solid #fafafa;margin:2px;float:right">
-				<div style="height:300px;width:360px;border:1px solid #ccc">
-				<div id="map" style="width: 360px; height: 300px"></div>
+				<div style="height:302px;width:396px;border:6px solid #fafafa;margin:2px;float:right">
+				<div style="height:300px;width:394px;border:1px solid #ccc">
+				<div id="map" style="width: 394px; height: 300px"></div>
 				</div></div>
 			
 			</div>
-			
+	
+	
+  
 			<div style="height:150px;width:790px;border:5px solid #eee;margin-bottom:3px">
 			<div style="height:148px;width:788px;border:1px solid #aaa">
-			<?php echo $prfl?><?php echo $info?>
+			<?php echo $rows->prfl?><?php echo $rows->info?>
 			</div></div>
-			
+	<?php }}?>
 	
 <table width="800" style="border:5px solid #eee" align="center" cellspacing="1" bgcolor="#fff" onsubmit="return dosubmit();">
 		
@@ -201,18 +214,26 @@ function dosubmit()
 		<td bgcolor="#FFFFFF"><textarea name="neirong" cols="55" rows="8"></textarea>      
 		&nbsp;*</td>
 	  </tr>
-	 
+<?php  $sql = "select * from itms where itmnm='$itemname' ";
+  $rs = mysql_query($sql);
+
+  if($rs)
+  {
+  while($rows = mysql_fetch_object($rs))
+  {?>	 
 	  <tr>
 		<td height="35" colspan="2" align="center" bgcolor="#FFFFFF">
 			<input type="submit" name="Submit" id="button" value="提交"  />&nbsp;&nbsp;
 			<input type="reset" name="Submit2" value="重置" />
 			<input type="button" name="scan" value="查看我的留言" onclick="window.open('myliuyan/index.php')">
+			<input type="hidden" name="xp" id="lng" value="<?php echo $rows->xps?>"/>
+			<input type="hidden" name="yp" id="lat" value="<?php echo $rows->yps?>"/>
 		</td>
 	  </tr>
 	</table>
 </form>
 <br />
-			
+	<?php }}?>		
 			
 		</div>
 	</div>

@@ -12,16 +12,18 @@ $title = $_POST['title'];
 $subtitle=$_POST['subtitle'];
 $profile=$_POST['profile'];
 $info=$_POST['info'];
-
+$xps = $_POST['xp'];
+$yps = $_POST['yp'];
 $page = $_GET['page'];
 $username=$_SESSION['username'];
 $itemname=$_GET['itemname'];
+$classname = $_GET['classname'];
 //插入数据库
 if($title)
 {
 	$time = time();
 	$judtm=date( "Y-m-d H:i:s");
-	$sql = "insert into itms values('$title','$subtitle','','$info','$profile',8,8,'10','$username')";
+	$sql = "insert into itms values('$title','$subtitle','','$info','$profile',$xps,$yps,'$classname')";
 	
 	mysql_query("SET NAMES 'utf-8'"); 
  	$rs = mysql_query($sql);
@@ -80,9 +82,9 @@ HTML;
 		);
 		google.maps.event.addListener(marker, "dragend", function(){
 		var lat = document.getElementById("lat");
-		var lan = document.getElementById("lan");
+		var lng = document.getElementById("lan");
 		lat.value=marker.getPosition().lat();
-		lan.value = marker.getPosition().lng();
+		lng.value = marker.getPosition().lng();
 		});
 
 
@@ -134,12 +136,23 @@ function dosubmit()
 <div style="width:1000px;height:2000px;text-align:left;border:0px">
 	<div class=topBar id=toplogo>
 	
-		<input type=button value="首页" onMouseOut="this.style.backgroundColor=''" onMouseOver="this.style.backgroundColor='#777'" onclick="window.open('homepage.php')" style="margin-left:100px" class=topButtons>
-		<input type=button value="周边信息" onMouseOut="this.style.backgroundColor=''" onMouseOver="this.style.backgroundColor='#777'" onclick="window.open('classes.php')" class=topButtons>
+		<input type=button value="首页" onMouseOut="this.style.backgroundColor=''" onMouseOver="this.style.backgroundColor='#777'" onclick="window.location.href='index.php'" style="margin-left:100px" class=topButtons>
+		<input type=button value="周边信息" onMouseOut="this.style.backgroundColor=''" onMouseOver="this.style.backgroundColor='#777'" onclick="window.location.href='classes.php'" class=topButtons>
 		<input type=button value="关于我们" onMouseOut="this.style.backgroundColor=''" onMouseOver="this.style.backgroundColor='#777'" onclick="window.open('aboutus.php')" class=topButtons>
-		<a href="register.html" style="margin-left:200px;margin-top:0px;color:#fff"class="topButtons" >注册</a>
-		<big style="margin-left:5px" class=topButtons>|</big>
-		<a href="login.html" style="margin-left:5px;margin-top:0px;color:#fff" class="topButtons" >登录</a>
+		<?php
+			if(isset($_SESSION['username']))
+				echo<<<EOF
+					<a href='profile.php' style='margin-left:130px;margin-top:0px;color:#fff'class='topButtons'>{$_SESSION['username']}</a>
+					<big style='margin-left:5px' class=topButtons>|</big>
+					<a href='logout.php' style='margin-left:5px;margin-top:0px;color:#fff' class='topButtons' >Log out</a>
+EOF;
+			else
+				echo<<<EOF
+					<a href='register.html' style='margin-left:200px;margin-top:0px;color:#fff'class='topButtons'>注册</a>
+					<big style='margin-left:5px' class=topButtons>|</big>
+					<a href='login.html' style='margin-left:5px;margin-top:0px;color:#fff' class='topButtons' >登录</a>
+EOF;
+		?>
 		
 	</div>
 	
@@ -196,8 +209,8 @@ function dosubmit()
 				<td height="25" align="center" bgcolor="#FFFFFF">指出位置</td>
 				<td style="width: 360px; height: 500px">
 				<div id="map" style="width: 560px; height: 500px"></div>
-				<input type="text" name="xp" id="lat"/>
-				<input type="text" name="yp" id="lan"/>
+				<input type="hidden" name="xp" id="lng"/>
+				<input type="hidden" name="yp" id="lat"/>
 				</td>
 			</tr>
 			

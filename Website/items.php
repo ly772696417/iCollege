@@ -163,7 +163,7 @@ else{
 
   <tr>
     <td height="25" colspan="2" align="center"  bgcolor="#fff" ><?php echo				 get_page_list("items.php",$num,$page_size,5); ?>
-	<a href="userEdit.php"> 添加词条<a>
+	<a href="userEdit.php?classname=<?php echo $classname;?>"> 添加词条<a>
 	</td>
   </tr>
 </table>

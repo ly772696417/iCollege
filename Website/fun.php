@@ -45,7 +45,7 @@ function get_page_list($get_var,$total_record,$page_size=20,$list_len=5)
         }
         if($nextpage<=$total_page){
 		echo "<a href='".$get_var."&page=".$nextpage."&total_record=".$total_record."'>下一页</a>\r\n";
-		echo "<a href='".$get_var."&total_record=".$total_record."&page=".$total_page."'>未页</a>\r\n";
+		echo "<a href='".$get_var."&total_record=".$total_record."&page=".$total_page."'>末页</a>\r\n";
 		}
    }
 
