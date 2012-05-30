@@ -60,12 +60,23 @@ function dosubmit()
 <center>
 <div style="width:1000px;text-align:left;border:0px">
 	<div class=topBar id=toplogo>
-		<input type=button value="首页" onMouseOut="this.style.backgroundColor=''" onMouseOver="this.style.backgroundColor='#777'" onclick="window.open('index.php')" style="margin-left:100px" class=topButtons>
-		<input type=button value="周边信息" onMouseOut="this.style.backgroundColor=''" onMouseOver="this.style.backgroundColor='#777'" onclick="window.open('classes.php')" class=topButtons>
+		<input type=button value="首页" onMouseOut="this.style.backgroundColor=''" onMouseOver="this.style.backgroundColor='#777'" onclick="window.location.href='index.php'" style="margin-left:100px" class=topButtons>
+		<input type=button value="周边信息" onMouseOut="this.style.backgroundColor=''" onMouseOver="this.style.backgroundColor='#777'" onclick="window.location.href='classes.php'" class=topButtons>
 		<input type=button value="关于我们" onMouseOut="this.style.backgroundColor=''" onMouseOver="this.style.backgroundColor='#777'" onclick="window.open('aboutus.php')" class=topButtons>
-		<a href="register.html" style="margin-left:200px;margin-top:0px;color:#fff"class="topButtons" >注册</a>
-		<big style="margin-left:5px" class=topButtons>|</big>
-		<a href="login.html" style="margin-left:5px;margin-top:0px;color:#fff" class="topButtons" >登录</a>
+		<?php
+			if(isset($_SESSION['username']))
+				echo<<<EOF
+					<a href='profile.php' style='margin-left:130px;margin-top:0px;color:#fff'class='topButtons'>{$_SESSION['username']}</a>
+					<big style='margin-left:5px' class=topButtons>|</big>
+					<a href='logout.php' style='margin-left:5px;margin-top:0px;color:#fff' class='topButtons' >Log out</a>
+EOF;
+			else
+				echo<<<EOF
+					<a href='register.html' style='margin-left:200px;margin-top:0px;color:#fff'class='topButtons'>注册</a>
+					<big style='margin-left:5px' class=topButtons>|</big>
+					<a href='login.html' style='margin-left:5px;margin-top:0px;color:#fff' class='topButtons' >登录</a>
+EOF;
+		?>
 	</div>
 	<div style="height:1300px;background:url(images/bg1300.png)">
 	<center>

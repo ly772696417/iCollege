@@ -40,7 +40,7 @@ EOF;
 			<div style="height:496px;width:826px;padding:20px;border-top:2px solid #ccc;border-left:2px solid #ccc">
 			<center>
 				<big>关于我们</big><br><br><hr><br>
-				项目名称：iCollege <br>小组名称：Tech-5<br>小组成员：赵轶凡 李垚 杜艺卓<br>完成时间：2012.5.28
+				项目名称：iCollege <br>小组名称：Tech-5<br>小组成员：赵轶凡 李垚 杜艺卓 张哲<br>完成时间：2012.5.28
 			</center>
 			</div></div>
 		</div>
