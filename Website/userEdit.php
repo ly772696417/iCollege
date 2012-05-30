@@ -54,33 +54,37 @@ HTML;
 }
 </style>
 
-<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAWA_efwiQDHrv6MYDa3HE3hTwM0brOpm-All5BF6PoaKBxRWWERSSjUV6DjLhSErRl9rovZBNtOhNfA "
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCJPNB7P9KeU033UCFHm8bLQ_gpqDkYiYc&sensor=true"
             type="text/javascript"></script>
     <script type="text/javascript">
     //<![CDATA[
 
     function load() {
-      if (GBrowserIsCompatible()) {
-        var map = new GMap2(document.getElementById("map"));
-        map.setCenter(new GLatLng(39.95, 116.345), 13);
-		map.addControl(new GSmallMapControl());
-		map.addControl(new GMapTypeControl());
-		
-		
-		var center = new GLatLng(39.95, 116.345);
-		var marker = new GMarker(center, {draggable: true});
+		var map;
+		var options = {
+			zoom: 14,
+			center: new google.maps.LatLng(39.95, 116.345),
+			mapTypeId: google.maps.MapTypeId.ROADMAP,
+			scaleControl: true,
+			mapTypeControl: true
+		};
+        var map = new google.maps.Map(document.getElementById("map"), options);
 
-		GEvent.addListener(marker, "dragstart", function() {
-		map.closeInfoWindow();
+		var marker = new google.maps.Marker(
+			{
+				position: new google.maps.LatLng(39.95, 116.345),
+				map: map,
+				title: '放到合适的位置上',
+				draggable: true
+			}
+		);
+		google.maps.event.addListener(marker, "dragged", function(){
+			//document.form1.xp.value=marker.getPosition().lng();
+			//document.form1.yp.value=marker.getPosition().lat();
+			document.write(marker.getPosition());
 		});
 
-		GEvent.addListener(marker, "dragend", function() {
-		marker.openInfoWindowHtml("请把我放到我的位置上");
-		});
 
-		
-		map.addOverlay(marker);
-      }
     }
 
     </script>
@@ -213,11 +217,11 @@ function dosubmit()
 <!--动态添加文件浏览框函数-->
 function insertElement() 
     {
-          //找到放置动态生成的文件框的表格 
-          var otablefile = document.getElementById("filetable");
-          //添加一个新行
-          var otr = otablefile.insertRow(0);
-          //在新行中添加一个单元格，单元格中包含一个文件浏览框和一个删除按钮
+         //找到放置动态生成的文件框的表格 
+         var otablefile = document.getElementById("filetable");
+         //添加一个新行
+         var otr = otablefile.insertRow(0);
+         //在新行中添加一个单元格，单元格中包含一个文件浏览框和一个删除按钮
          otr.insertCell(0).innerHTML = "<input type=file name=userfile[] size=60><input type=button      value='删除' onclick='deltr(this);'>";     
     }
 <!--删除动态增加的文件框-->  

@@ -7,28 +7,30 @@ error_reporting(E_ALL & ~E_NOTICE);
 require_once("config.php");
 require_once("fun.php");
 
+	$neirong = $_POST['neirong'];
 
-$neirong = $_POST['neirong'];
-
-$page = $_GET['page'];
-$username=$_SESSION['username'];
-$itemname=$_GET['itemname'];
-$classname=$_GET['classname'];
-//插入数据库
-if($neirong)
-{
-	$time = time();
-	$judtm=date( "Y-m-d H:i:s");
-	$sql = "insert into cmmnts values('$itemname','$neirong','$judtm','$username')";
-	
- 	$rs = mysql_query($sql);
-	
-	if($rs)
+	$page = $_GET['page'];
+	$username=$_SESSION['username'];
+	$itemname=$_GET['itemname'];
+	$classname=$_GET['classname'];
+	//插入数据库
+	if($neirong)
 	{
-		echo "<meta http-equiv=refresh content='0; url=itemsInfo.php?itemname=$itemname'>"; 
+		$time = time();
+		$judtm=date( "Y-m-d H:i:s");
+		$sql = "insert into cmmnts values('$itemname','$neirong','$judtm','$username')";
+	
+		$rs = mysql_query($sql);
+	
+		if($rs)
+		{
+			echo "<script>document.location.href=this</script>";
 
-	}
-} 
+		}
+	} 
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -202,7 +204,7 @@ function dosubmit()
 	 
 	  <tr>
 		<td height="35" colspan="2" align="center" bgcolor="#FFFFFF">
-			<input type="submit" name="Submit" id="button" value="提交"   />&nbsp;&nbsp;
+			<input type="submit" name="Submit" id="button" value="提交"  />&nbsp;&nbsp;
 			<input type="reset" name="Submit2" value="重置" />
 			<input type="button" name="scan" value="查看我的留言" onclick="window.open('myliuyan/index.php')">
 		</td>

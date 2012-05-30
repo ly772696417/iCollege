@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html><html>
+﻿<!DOCTYPE html>
+<?php session_start(); ?>
+<html>
 <head>
 	<meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
 	<title>iCollege —— 我的大学</title>
@@ -14,9 +16,18 @@
 		<input type=button value="周边信息" onMouseOut="this.style.backgroundColor=''" onMouseOver="this.style.backgroundColor='#777'" onclick="window.location.href='classes.php'" class=topButtons>
 		<input type=button value="关于我们" onMouseOut="this.style.backgroundColor=''" onMouseOver="this.style.backgroundColor='#777'" onclick="window.open('aboutus.php')" class=topButtons>
 		<?php
-			if(!session_start()) session_start();
-			if($_SESSION['status'] == false)
-				echo "<a href='register.html' style='margin-left:200px;margin-top:0px;color:#fff'class='topButtons'>注册</a><big style='margin-left:5px' class=topButtons>|</big><a href='login.html' style='margin-left:5px;margin-top:0px;color:#fff' class='topButtons' >登录</a>";
+			if(isset($_SESSION['username']))
+				echo<<<EOF
+					<a href='profile.php' style='margin-left:130px;margin-top:0px;color:#fff'class='topButtons'>{$_SESSION['username']}</a>
+					<big style='margin-left:5px' class=topButtons>|</big>
+					<a href='logout.php' style='margin-left:5px;margin-top:0px;color:#fff' class='topButtons' >Log out</a>
+EOF;
+			else
+				echo<<<EOF
+					<a href='register.html' style='margin-left:200px;margin-top:0px;color:#fff'class='topButtons'>注册</a>
+					<big style='margin-left:5px' class=topButtons>|</big>
+					<a href='login.html' style='margin-left:5px;margin-top:0px;color:#fff' class='topButtons' >登录</a>
+EOF;
 		?>
 		
 	</div>
