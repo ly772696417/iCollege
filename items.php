@@ -82,14 +82,14 @@ EOF;
 	<center>
 		<div style="height:1980px;width:960px;background-color:#fff" id=midpic>
 			<div style="height:310px;background:url(images/mainpic.png);"></div>
-			<div style="height:90px;width:894px;margin:10px;background-color:#aaa">
+			<div style="height:90px;width:894px;margin:10px;background-color:#888">
 			<big style="font-size:66;font-family:'微软雅黑';color:#fff"><?php echo $classname ?></big>
 			</div>
 			
 
 <table width="900" border="0" align="center" cellspacing="20"  onsubmit="return dosubmit();" style="word-break:break-word"> 
-<div style="height:40px;width:900px;background-color:#eee">
-<a style="font-size:24;font-family:'微软雅黑';color:#333"  href="userEdit.php?classname=<?php echo $classname;?>">添加词条</a>
+<div style="height:40px;width:900px;background-color:#f39227">
+<a style="font-size:26;font-family:'微软雅黑';color:#fff"  href="userEdit.php?classname=<?php echo $classname;?>">添加词条</a>
 </div>
   <?php
   //留言列表
@@ -126,7 +126,7 @@ EOF;
 			<td height="80"  style="color:#111">
 			<center>
 			<big style="font-size:30;font-family:'微软雅黑';color:#333;background-color:#fff"><?php echo $rows->itmnm; ?> </big><br>
-			<big style="font-size:16;font-family:'微软雅黑';color:#888;background-color:#fff">&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $rows->sbttl; ?></big>
+			<big style="font-size:16;font-family:'微软雅黑';color:#888;background-color:#fff"><?php echo $rows->sbttl; ?></big>
 			</center>
 			</td>
 		  </tr>		
@@ -157,7 +157,7 @@ else{
 			<td height="80"  style="color:#111">
 			<center>
 			<big style="font-size:30;font-family:'微软雅黑';color:#333;background-color:#fff"><?php echo $rows->itmnm; ?> </big><br>
-			<big style="font-size:16;font-family:'微软雅黑';color:#888;background-color:#fff">&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $rows->sbttl; ?></big>
+			<big style="font-size:16;font-family:'微软雅黑';color:#888;background-color:#fff"><?php echo $rows->sbttl; ?></big>
 			</center>
 			</td>
 		  </tr>		

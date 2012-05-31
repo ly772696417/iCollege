@@ -164,7 +164,7 @@ EOF;
 			
 				<div style="height:302px;width:362px;border:6px solid #fafafa;margin:2px;float:left">
 				<div style="height:300px;width:360px;border:1px solid #ccc">
-				<img style="height:300px;width:360px" src="images/itemimg/<?php echo $itemname?>.png"></img>
+				<img style="height:300px;width:360px" src="images/itemimg/<?php echo $rows->img?>.png"></img>
 				</div ></div>
 			
 				<div style="height:302px;width:396px;border:6px solid #fafafa;margin:2px;float:right">
@@ -220,9 +220,9 @@ EOF;
     <td width="726" height="25" valign="middle" bgcolor="#FFFFFF">
        <table width="100%" border="0" cellspacing="1" bgcolor="#EAEAEA">
 		  <tr>
-			<td height="30" bgcolor="#FFFFFF" style="font-size:16;font-family:'微软雅黑';color:#333">
-			<big style="margin-left:10px;font-size:24;font-family:'微软雅黑';color:#333"><?php echo $rows->usrnm;  ?></big>
-			<big style="font-size:16;font-family:'微软雅黑';color:#777">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $rows->jdgtm;  ?></big>
+			<td height="30" bgcolor="#bbb" style="font-size:16;font-family:'微软雅黑';color:#333">
+			<big style="margin-left:10px;font-size:24;font-family:'微软雅黑';color:#fff"><?php echo $rows->usrnm;  ?></big>
+			<big style="font-size:16;font-family:'微软雅黑';color:#fff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $rows->jdgtm;  ?></big>
 		  </tr>
 		  
 		  <tr>
@@ -237,7 +237,7 @@ EOF;
   ?>
 
   <tr>
-    <td height="25" colspan="2" align="center" bgcolor="#eee"><?php echo				 get_page_list("itemsInfo.php",$num,$page_size,5); ?>
+    <td height="25" colspan="2" align="center" bgcolor="#ddd	"><?php echo				 get_page_list("itemsInfo.php",$num,$page_size,5); ?>
 	</td>
   </tr>
 </table>
@@ -260,8 +260,8 @@ EOF;
   {?>	 
 	  <tr>
 		<td height="45" colspan="2" align="center" bgcolor="#FFFFFF">
-			<input type="submit" name="Submit" id="button" value="提交" style="height:40px;width:100px;background:url(images/button2.jpg)" />&nbsp;&nbsp;
-			<input type="reset" name="Submit2" value="重置" style="height:40px;width:100px;background:url(images/button2.jpg);margin-left:50px"/>
+			<input type="submit" name="Submit" id="button" value="提交" style="height:40px;width:100px;background-color:#c7ac8a" />&nbsp;&nbsp;
+			<input type="reset" name="Submit2" value="重置" style="height:40px;width:100px;background-color:#c7ac8a;margin-left:50px"/>
 			<input type="hidden" name="xp" id="lng" value="<?php echo $rows->xps?>"/>
 			<input type="hidden" name="yp" id="lat" value="<?php echo $rows->yps?>"/>
 		</td>

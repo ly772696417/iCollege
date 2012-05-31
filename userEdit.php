@@ -21,11 +21,9 @@ $classname = $_GET['classname'];
 //插入数据库
 if($title)
 {
-	$time = time();
-	$judtm=date( "Y-m-d H:i:s");
-	$sql = "insert into itms values('$title','$subtitle','','$info','$profile',$xps,$yps,'$classname')";
+	$img = "test";
+	$sql = "insert into itms values('$title','$subtitle','$img','$info','$profile',$xps,$yps,'$classname')";
 	
-	mysql_query("SET NAMES 'utf-8'"); 
  	$rs = mysql_query($sql);
 	
 	if($rs)
@@ -38,6 +36,18 @@ echo<<<HTML
 	},1000);
 	</script>
 HTML;
+	}
+	
+	else{
+	echo<<<HTML
+	<script>
+	alert('编辑失败');
+	setTimeout(function(){
+		window.parent.document.location.href="userEdit.php?classname=$classname";
+	},1000);
+	</script>
+HTML;
+	
 	}
 } 
 ?>
@@ -82,7 +92,7 @@ HTML;
 		);
 		google.maps.event.addListener(marker, "dragend", function(){
 		var lat = document.getElementById("lat");
-		var lng = document.getElementById("lan");
+		var lng = document.getElementById("lng");
 		lat.value=marker.getPosition().lat();
 		lng.value = marker.getPosition().lng();
 		});
@@ -209,8 +219,8 @@ EOF;
 				<td height="25" align="center" bgcolor="#FFFFFF">指出位置</td>
 				<td style="width: 360px; height: 500px">
 				<div id="map" style="width: 560px; height: 500px"></div>
-				<input type="hidden" name="xp" id="lng"/>
-				<input type="hidden" name="yp" id="lat"/>
+				<input type="text" name="xp" id="lng"/>
+				<input type="text" name="yp" id="lat"/>
 				</td>
 			</tr>
 			
