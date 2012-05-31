@@ -167,8 +167,8 @@ EOF;
   
 			<div style="height:150px;width:790px;border:5px solid #eee;margin-bottom:3px">
 			<div style="height:148px;width:788px;border:1px solid #bbb">
-			<div style="overflow:auto;height:146px;width:366px;border:2px solid #bbb;float:left"><?php echo $rows->prfl?></div>
-			<div style="overflow:auto;height:146px;width:414px;border:2px solid #bbb;float:right"><?php echo $rows->info?></div>
+			<div style="text-align:left;overflow:auto;height:146px;width:366px;border:2px solid #bbb;float:left"><?php echo $rows->prfl?></div>
+			<div style="text-align:left;overflow:auto;height:146px;width:414px;border:2px solid #bbb;float:right"><?php echo $rows->info?></div>
 			
 			</div></div>
 	<?php }}?>
