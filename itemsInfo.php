@@ -13,9 +13,19 @@ require_once("fun.php");
 	$username=$_SESSION['username'];
 	$itemname=$_GET['itemname'];
 
+	
 	//插入数据库
 	if($neirong)
 	{
+		if(!isset($_SESSION['username']))
+		{
+			echo<<<HTML
+		<script>
+		alert('请先登录。');
+		window.location.href='login.html'
+		</script>
+HTML;
+	}
 		$time = time();
 		$judtm=date( "Y-m-d H:i:s");
 		$sql = "insert into cmmnts values('$itemname','$neirong','$judtm','$username')";
@@ -50,6 +60,7 @@ HTML;
 	font-size: 18px;
 	font-weight: bold;
 }
+
 </style>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCJPNB7P9KeU033UCFHm8bLQ_gpqDkYiYc&sensor=true"
@@ -144,12 +155,12 @@ EOF;
 			
 			
 			<div style="height:40px;width:790px;margin-bottom:30px;margin-left:80px;padding-top:10px;background-color:#fff" >
-			<big style="font-size:50;font-family:'微软雅黑';color:#333"><?php echo $itemname; ?> </big>
-			<big style="font-size:16;font-family:'微软雅黑';color:#888">&nbsp;&nbsp;<?php echo $rows->sbttl; ?></big>
+			<big style="font-size:60;font-family:'微软雅黑';color:#333"><?php echo $itemname; ?> </big>
+			<big style="font-size:20;font-family:'微软雅黑';color:#777">&nbsp;&nbsp;<?php echo $rows->sbttl; ?></big>
 			</div>
 
 			<center>
-			<div style="height:340px;width:790px;margin-bottom:3px;background-color:#fff" >
+			<div style="height:340px;width:790px;margin-bottom:3px;margin-top:40px;background-color:#fff" >
 			
 				<div style="height:302px;width:362px;border:6px solid #fafafa;margin:2px;float:left">
 				<div style="height:300px;width:360px;border:1px solid #ccc">
@@ -162,18 +173,25 @@ EOF;
 				</div></div>
 			
 			</div>
-	
-	
-  
-			<div style="height:150px;width:790px;border:5px solid #eee;margin-bottom:3px">
-			<div style="height:148px;width:788px;border:1px solid #bbb">
-			<div style="text-align:left;overflow:auto;height:146px;width:366px;border:2px solid #bbb;float:left"><?php echo $rows->prfl?></div>
-			<div style="text-align:left;overflow:auto;height:146px;width:414px;border:2px solid #bbb;float:right"><?php echo $rows->info?></div>
+			</center>
+			<big style="margin-left:90px;font-size:30;font-family:'微软雅黑';color:#333">概况</big>
+			<big style="font-size:16;font-family:'微软雅黑';color:#777">&nbsp;词条信息概况</big>
+			
+			<big style="margin-left:200px;font-size:30;font-family:'微软雅黑';color:#333">信息</big>
+			<big style="font-size:16;font-family:'微软雅黑';color:#777">&nbsp;&nbsp;&nbsp;&nbsp;词条的确切信息</big>
+			
+			<center>
+			<div style="height:150px;width:790px;border:5px solid #ccc;margin:20px">
+			<div style="height:148px;width:788px;border:1px solid #fff">
+			
+			<div style="text-align:left;overflow:auto;height:146px;width:366px;border:2px solid #fff;float:left;font-size:15;font-family:'微软雅黑';color:#333"><?php echo $rows->prfl?></div>
+			<div style="text-align:left;overflow:auto;height:146px;width:374px;margin-left:40px;border:2px solid #fff;float:right;font-size:15;font-family:'微软雅黑';color:#333"><?php echo $rows->info?></div>
 			
 			</div></div>
+			</center>
 	<?php }}?>
 	
-<table width="800" style="border:5px solid #eee" align="center" cellspacing="1" bgcolor="#fff" onsubmit="return dosubmit();">
+<table width="800" style="border:5px solid #ddd" align="center" cellspacing="1" bgcolor="#ddd" onsubmit="return dosubmit();">
 		
 			<?php
   //留言列表
@@ -202,10 +220,13 @@ EOF;
     <td width="726" height="25" valign="middle" bgcolor="#FFFFFF">
        <table width="100%" border="0" cellspacing="1" bgcolor="#EAEAEA">
 		  <tr>
-			<td height="30" bgcolor="#FFFFFF">&nbsp;时间：<?php echo $rows->jdgtm;  ?></td>
+			<td height="30" bgcolor="#FFFFFF" style="font-size:16;font-family:'微软雅黑';color:#333">
+			<big style="margin-left:10px;font-size:24;font-family:'微软雅黑';color:#333"><?php echo $rows->usrnm;  ?></big>
+			<big style="font-size:16;font-family:'微软雅黑';color:#777">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $rows->jdgtm;  ?></big>
 		  </tr>
+		  
 		  <tr>
-			<td height="60" bgcolor="#FFFFFF">&nbsp;<?=$rows->cmmnt?></td>
+			<td height="60" bgcolor="#FFFFFF" style="font-size:15;font-family:'微软雅黑';color:#222">&nbsp;<?=$rows->cmmnt?></td>
 		  </tr>		 
        </table>
 	</td>
@@ -222,14 +243,12 @@ EOF;
 </table>
 <br />
 
+<big style="margin-left:90px;font-size:30;font-family:'微软雅黑';color:#333">写点留言</big>
 <form action='' method='post' id="form1" name="form1" onsubmit="return dosubmit();">
-	<table width="800" border="0" align="center" cellspacing="1" bgcolor="#E1D1BF">
+	<table width="800" style="border:5px solid #ddd" align="center" cellspacing="1" bgcolor="#FFF">
 	  <tr>
-		<td height="25" colspan="2" align="left" bgcolor="#ddd">&nbsp;发布留言</td>
-	  </tr>
-	  <tr>
-		<td height="25" align="center" bgcolor="#FFFFFF">留言内容</td>
-		<td bgcolor="#FFFFFF"><textarea name="neirong" cols="55" rows="8"></textarea>      
+		<td height="25" align="center" bgcolor="#FFFFFF" style="font-size:15;font-family:'微软雅黑';color:#333">留言内容</td>
+		<td bgcolor="#FFFFFF"><textarea name="neirong" cols="95" rows="8"></textarea>      
 		&nbsp;*</td>
 	  </tr>
 <?php  $sql = "select * from itms where itmnm='$itemname'";
@@ -240,10 +259,9 @@ EOF;
   while($rows = mysql_fetch_object($rs))
   {?>	 
 	  <tr>
-		<td height="35" colspan="2" align="center" bgcolor="#FFFFFF">
-			<input type="submit" name="Submit" id="button" value="提交"  />&nbsp;&nbsp;
-			<input type="reset" name="Submit2" value="重置" />
-			<input type="button" name="scan" value="查看我的留言" onclick="window.open('myliuyan/index.php')">
+		<td height="45" colspan="2" align="center" bgcolor="#FFFFFF">
+			<input type="submit" name="Submit" id="button" value="提交" style="height:40px;width:100px;background:url(images/button2.jpg)" />&nbsp;&nbsp;
+			<input type="reset" name="Submit2" value="重置" style="height:40px;width:100px;background:url(images/button2.jpg);margin-left:50px"/>
 			<input type="hidden" name="xp" id="lng" value="<?php echo $rows->xps?>"/>
 			<input type="hidden" name="yp" id="lat" value="<?php echo $rows->yps?>"/>
 		</td>

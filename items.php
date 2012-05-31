@@ -78,17 +78,19 @@ EOF;
 EOF;
 		?>
 	</div>
-	<div style="height:1300px;background:url(images/bg1300.png)">
+	<div style="height:2000px;background:url(images/bgshadow.png)">
 	<center>
-		<div style="height:1250px;width:960px;background-color:#fff" id=midpic>
+		<div style="height:1980px;width:960px;background-color:#fff" id=midpic>
 			<div style="height:310px;background:url(images/mainpic.png);"></div>
-			<div style="height:40px;width:894px;margin:10px;background-color:111">
-			<big style="font-size:26;font-family:'微软雅黑';color:#fff"><?php echo $classname ?></big>
+			<div style="height:90px;width:894px;margin:10px;background-color:#aaa">
+			<big style="font-size:66;font-family:'微软雅黑';color:#fff"><?php echo $classname ?></big>
 			</div>
 			
 
-<table width="900" border="0" align="center" cellspacing="24"  onsubmit="return dosubmit();" style="word-break:break-word"> 
-
+<table width="900" border="0" align="center" cellspacing="20"  onsubmit="return dosubmit();" style="word-break:break-word"> 
+<div style="height:40px;width:900px;background-color:#eee">
+<a style="font-size:24;font-family:'微软雅黑';color:#333"  href="userEdit.php?classname=<?php echo $classname;?>">添加词条</a>
+</div>
   <?php
   //留言列表
   
@@ -101,7 +103,7 @@ EOF;
 	  $num = mysql_num_rows($rs);
   }
 
-  $page_size = 6; //每页显示留言数目
+  $page_size = 12; //每页显示留言数目
 
   $sql = "select * from itms where clssnm='".$classname."' order by itmnm".get_limit($page_size);
   	mysql_query("SET NAMES 'utf-8'"); 
@@ -118,7 +120,16 @@ EOF;
 	
   <td >
     <td width="260" height="100" bgcolor="#FFFFFF">
-     <table width="100%" height="100%"  style="border:1px solid #111;">
+     <table width="100%" height="100%"  style="border:5px solid #ccc;background-color:#eee">
+	
+		  <tr bgcolor="#fff">
+			<td height="80"  style="color:#111">
+			<center>
+			<big style="font-size:30;font-family:'微软雅黑';color:#333;background-color:#fff"><?php echo $rows->itmnm; ?> </big><br>
+			<big style="font-size:16;font-family:'微软雅黑';color:#888;background-color:#fff">&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $rows->sbttl; ?></big>
+			</center>
+			</td>
+		  </tr>		
 	
         <tr>
           <td align="center">
@@ -127,12 +138,7 @@ EOF;
 			</a>
 		  </td>
         </tr>
-		<tr bgcolor="#111">
-			<td height="40"   style="color:#fff;font-family:'微软雅黑'"><center>&nbsp;<?=$rows->itmnm ?>&nbsp;&nbsp;</td>
-		  </tr>
-		  <tr bgcolor="#fff">
-			<td height="40"  style="color:#111;font-family:'微软雅黑'"><center>&nbsp;<?=$rows->sbttl ?></td>
-		  </tr>		
+		
       </table>
     </td>
 
@@ -145,7 +151,16 @@ else{
  
  <tr>
     <td width="260" height="100" bgcolor="#FFFFFF">
-    <table width="100%" height="100%"  style="border:1px solid #111;">
+    <table width="100%" height="100%"  style="border:5px solid #ccc;background-color:#eee">
+	
+		  <tr bgcolor="#fff">
+			<td height="80"  style="color:#111">
+			<center>
+			<big style="font-size:30;font-family:'微软雅黑';color:#333;background-color:#fff"><?php echo $rows->itmnm; ?> </big><br>
+			<big style="font-size:16;font-family:'微软雅黑';color:#888;background-color:#fff">&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $rows->sbttl; ?></big>
+			</center>
+			</td>
+		  </tr>		
 	
         <tr>
           <td align="center">
@@ -154,14 +169,8 @@ else{
 			</a>
 		  </td>
         </tr>
-		<tr bgcolor="#111">
-			<td height="40"   style="color:#fff;font-family:'微软雅黑'"><center>&nbsp;<?=$rows->itmnm ?>&nbsp;&nbsp;</td>
-		  </tr>
-		  <tr bgcolor="#fff">
-			<td height="40"  style="color:#111;font-family:'微软雅黑'"><center>&nbsp;<?=$rows->sbttl ?></td>
-		  </tr>		
+		
       </table>
-
     </td>
 
 
@@ -171,10 +180,10 @@ else{
   $i++;
   }}
   ?>
-
+</tr>
   <tr>
     <td height="25" colspan="2" align="center"  bgcolor="#fff" ><?php echo				 get_page_list("items.php",$num,$page_size,5); ?>
-	<a href="userEdit.php?classname=<?php echo $classname;?>"> 添加词条<a>
+	
 	</td>
   </tr>
 </table>
