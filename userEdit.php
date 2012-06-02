@@ -16,7 +16,7 @@ $xps = $_POST['xp'];
 $yps = $_POST['yp'];
 $page = $_GET['page'];
 $username=$_SESSION['username'];
-$itemname=$_GET['itemname'];
+
 $classname = $_GET['classname'];
 //插入数据库
 if($title)
@@ -32,7 +32,7 @@ echo<<<HTML
 	<script>
 	alert('编辑成功');
 	setTimeout(function(){
-		window.parent.document.location.href="classes.php";
+		window.parent.document.location.href="items.php?classname=$classname";
 	},1000);
 	</script>
 HTML;
@@ -90,6 +90,9 @@ HTML;
 				draggable: true
 			}
 		);
+		lat.value=marker.getPosition().lat();
+		lng.value = marker.getPosition().lng();
+		
 		google.maps.event.addListener(marker, "dragend", function(){
 		var lat = document.getElementById("lat");
 		var lng = document.getElementById("lng");
@@ -199,7 +202,7 @@ EOF;
 			</tr>
 			
 			<tr>
-				<td height="25" align="center" bgcolor="#FFFFFF">上传图片</td>
+				<td height="40" align="center" bgcolor="#FFFFFF">上传图片</td>
 　 <!--点此按钮将在下面的表格中动态添加和删除文件框-->
      　        <td><input name="button" type="button" onClick="insertElement()" value="增加图片">
        <!---->  
@@ -219,8 +222,8 @@ EOF;
 				<td height="25" align="center" bgcolor="#FFFFFF">指出位置</td>
 				<td style="width: 360px; height: 500px">
 				<div id="map" style="width: 560px; height: 500px"></div>
-				<input type="text" name="xp" id="lng"/>
-				<input type="text" name="yp" id="lat"/>
+				<input type="hidden" name="xp" id="lng"/>
+				<input type="hidden" name="yp" id="lat"/>
 				</td>
 			</tr>
 			
