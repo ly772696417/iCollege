@@ -1,5 +1,5 @@
 ﻿<?php
-session_start();
+  session_start();
 
 date_Default_TimeZone_set("PRC");
 error_reporting(E_ALL & ~E_NOTICE);
